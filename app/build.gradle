@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.logichexa.pdf'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.logichexa.pdf"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_16
+        targetCompatibility JavaVersion.VERSION_16
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+
+   // implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'org.apache.pdfbox:pdfbox:2.0.28'
+
+    implementation ('com.itextpdf:itextpdf:5.5.13.2') {
+        exclude group: 'com.itextpdf', module: 'itextg'
+    }
+    implementation 'com.itextpdf.tool:xmlworker:5.5.13.2'
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+
